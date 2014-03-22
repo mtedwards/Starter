@@ -3,3 +3,9 @@
 /bower_components/
 
 /node_modules/
+
+/build/mini-style.css
+
+/css/prefixed/style.css
+
+/css/style.css
