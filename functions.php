@@ -6,6 +6,8 @@ require_once( get_template_directory() . '/lib/theme-functions.php'); // load Fo
 require_once( get_template_directory() . '/lib/class-tgm-plugin-activation.php' );
 require_once( get_template_directory() . '/lib/theme-require-plugins.php' );
 
+add_action( 'tgmpa_register', 'mb_register_required_plugins' );
+
 /**********************
 Add theme supports
 **********************/
