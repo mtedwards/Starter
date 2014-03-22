@@ -2,10 +2,14 @@
 
 require_once( get_template_directory() . '/lib/clean.php'); // do all the cleaning and enqueue here
 require_once( get_template_directory() . '/lib/foundation.php'); // load Foundation specific functions like top-bar
+require_once( get_template_directory() . '/lib/theme-functions.php'); // load Foundation specific functions like top-bar
+require_once( get_template_directory() . '/lib/class-tgm-plugin-activation.php' );
+require_once( get_template_directory() . '/lib/theme-require-plugins.php' );
+
 /**********************
 Add theme supports
 **********************/
-function reverie_theme_support() {
+function starter_theme_support() {
 
 	// Add post thumbnail supports. http://codex.wordpress.org/Post_Thumbnails
 	add_theme_support('post-thumbnails');
@@ -26,22 +30,23 @@ function reverie_theme_support() {
 	));
 
 }
-add_action('after_setup_theme', 'reverie_theme_support'); /* end Reverie theme support */
+	
+add_action('after_setup_theme', 'starter_theme_support'); 
 
-// create widget areas: sidebar, footer
-$sidebars = array('Sidebar');
-foreach ($sidebars as $sidebar) {
-	register_sidebar(array('name'=> $sidebar,
-		'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
-		'after_widget' => '</div></article>',
-		'before_title' => '<h6><strong>',
-		'after_title' => '</strong></h6>'
-	));
-}
+	// create widget areas: sidebar, footer
+	$sidebars = array('Sidebar');
+	foreach ($sidebars as $sidebar) {
+		register_sidebar(array('name'=> $sidebar,
+			'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
+			'after_widget' => '</div></article>',
+			'before_title' => '<h6><strong>',
+			'after_title' => '</strong></h6>'
+		));
+	}
 
 
 // return entry meta information for posts, used by multiple loops.
-function reverie_entry_meta() {
-	echo '<p class="byline"><time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'reverie'), get_the_time('l, F jS, Y'), get_the_time()) .'</time></p>';
-	//echo '<p class="byline author">'. __('Written by', 'reverie') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
+function entry_meta() {
+		echo '<p class="byline"><time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'starter'), get_the_time('l, F jS, Y'), get_the_time()) .'</time></p>';
+		//echo '<p class="byline author">'. __('Written by', 'starter') .' <a href="'. get_author_posts_url(get_the_author_meta('ID')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
 }
