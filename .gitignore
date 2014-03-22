@@ -4,8 +4,6 @@
 
 /node_modules/
 
-/build/mini-style.css
+/build/
 
-/css/prefixed/style.css
-
-/css/style.css
+/css/
