@@ -6,7 +6,8 @@
   </footer>
 
 <?php wp_footer(); ?>
-
-<script src="<?php bloginfo('template_url'); ?>/bower_components/REM-unit-polyfill/js/rem.js" type="text/javascript"></script>
+<!--[if lt IE 9 ]>
+	<script src="<?php bloginfo('template_url'); ?>/build/REM-unit-polyfill/js/rem.min.js" type="text/javascript"></script>
+<![endif]-->
 </body>
 </html>
