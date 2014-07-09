@@ -108,14 +108,14 @@ function reverie_scripts_and_styles() {
   if (!is_admin()) {
 
     // modernizr (without media query polyfill)
-    wp_register_script( 'reverie-modernizr', get_template_directory_uri() . '/bower_components/foundation/js/vendor/modernizr.js', array(), '2.6.2', false );
+    wp_register_script( 'reverie-modernizr', get_template_directory_uri() . '/build/modernizr.min.js', array(), '2.8.3', false );
 
     // comment reply script for threaded comments
     if( get_option( 'thread_comments' ) )  { wp_enqueue_script( 'comment-reply' ); }
     
     // adding Foundation scripts file in the footer
-    wp_register_script( 'reverie-js', get_template_directory_uri() . '/build/production.min.js', array( 'jquery' ), '201403211727', true );
-    wp_register_style( 'reverie-stylesheet', get_template_directory_uri() . '/build/mini-style.css', array(), '201403211727', 'all' );
+    wp_register_script( 'reverie-js', get_template_directory_uri() . '/build/production.min.js', array( 'jquery' ), '201407091218', true );
+    wp_register_style( 'reverie-stylesheet', get_template_directory_uri() . '/build/mini-style.css', array(), '201407091218', 'all' );
     
 
     // enqueue styles and scripts
