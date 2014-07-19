@@ -19,7 +19,10 @@ module.exports = {
 		//'bower_components/foundation/js/foundation/foundation.tooltip.js',
 		'bower_components/foundation/js/foundation/foundation.topbar.js',
 		'bower_components/foundation/js/vendor/placeholder.js',
-		'bower_components/fitvids/jquery.fitvids.js',
+		//'bower_components/fitvids/jquery.fitvids.js',
+		//'js/jquery.fancybox.js',
+		//'js/jquery.fancybox-media.js',
+		//'js/responsiveslides.js',
 		'js/app.js'
     ],
     dest: 'js/build/production.js'
