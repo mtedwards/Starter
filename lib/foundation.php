@@ -17,10 +17,12 @@ function reverie_pagination() {
 	    'next_text' => __('&raquo;'),
 		'type' => 'list'
 	) );
+	
+	$paginate_links = str_replace( "<ul class='page-numbers'>", '<ul class="pagination">', $paginate_links );
  
 	// Display the pagination if more than one page is found
 	if ( $paginate_links ) {
-		echo '<div class="pagination-centered">';
+		echo '<div class="pagination-centered text-center">';
 		echo $paginate_links;
 		echo '</div><!--// end .pagination -->';
 	}
