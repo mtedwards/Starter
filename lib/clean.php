@@ -29,7 +29,6 @@ function reverie_startup() {
     add_filter( 'img_caption_shortcode', 'reverie_cleaner_caption', 10, 3 );
     add_filter('get_image_tag_class', 'reverie_image_tag_class', 0, 4);
     add_filter('get_image_tag', 'reverie_image_editor', 0, 4);
-    add_filter( 'the_content', 'reverie_img_unautop', 30 );
 
 } /* end reverie_startup */
 
@@ -207,14 +206,6 @@ function reverie_image_editor($html, $id, $alt, $title) {
 		),
 		$html);
 } /* end reverie_image_editor */
-
-// Wrap images with figure tag. Courtesy of Interconnectit http://interconnectit.com/2175/how-to-remove-p-tags-from-images-in-wordpress/
-function reverie_img_unautop($pee) {
-    $pee = preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $pee);
-    return $pee;
-} /* end reverie_img_unautop */
-
-
 
 /**
  * Filter Yoast SEO Metabox Priority
