@@ -1,47 +1,38 @@
+// FIX the wpadminbar issue
 
-/* Start to customize Reverie */
+@media screen and (max-width:600px){
+  #wpadminbar {
+    top:-46px;
+  }
+}
 
+
+/* Start to customize Starter */
+
+/* Starndard WordPress Image alignment */
 .alignright {
-	float: right;
-	margin: 0 0 1em 1em;
+  float: right;
+  margin: 0 0 1em 1em;
 }
 
 .alignleft {
-	float: left;
-	margin: 0 1em 1em 0;
+  float: left;
+  margin: 0 1em 1em 0;
 }
 
 .aligncenter {
-	display:block;
-	margin: 1em auto;
+  display:block;
+  margin: 1em auto;
 }
 
 
 
 // adjusting header
 h4.subheader {
-	margin-top: -1em;
+  margin-top: -1em;
 }
 
-// add new pagination class for WordPress, Sass is amazingly fast
-//.page-numbers { @include pagination; }
 
-// customizing pagination for WordPress using Foundation mixins, this is not beautiful I know
-/*
-.page-numbers li {
-	span:hover a,
-	span a:focus {
-		background: $pagination-link-active-bg;
-	}
-	span.current {
-		background: $pagination-link-current-background;
-		padding: $pagination-link-pad;
-		color: $pagination-link-current-font-color;
-		font-weight: $pagination-link-current-font-weight;
-		cursor: $pagination-link-current-cursor;
-	}
-}
-*/
 
 // add some basic comment styles
 /*
@@ -75,10 +66,6 @@ ol.commentlist {
 }
 */
 
-// add some extra margin to ul
-ul {
-	margin-#{$default-float}: $list-side-margin;
-}
 
 // add some margin for images in post
 .container img {
@@ -99,26 +86,3 @@ input.prefix.button {
 	display: none;
 }
 
-h1.head {
-	position: absolute;
-	top: 0;
-	left: 100px;
-	font-size: 3em;
-	a {
-		color: white;
-	}
-}
-
-
-.readmore-js-toggle, .readmore-js-section {
-  display: block;
-  width: 100%;
-}
-.readmore-js-section {
-  overflow: hidden;
-}
-
-.readmore-js-toggle {
-	margin-bottom: 1em;
-	text-align: right;
-}
