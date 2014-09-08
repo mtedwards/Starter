@@ -3,7 +3,7 @@ module.exports = {
     livereload: true,
   },
   scripts: {
-    files: ['js/**/*.js'],
+    files: ['js/**/*.js','tasks/options/*.js'],
     tasks: ['concat', 'uglify'],
     options: {
       spawn: false,
