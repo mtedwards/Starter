@@ -14,7 +14,7 @@ function starter_theme_support() {
 	add_theme_support('post-thumbnails');
 	add_image_size( 'small-feature', 400, 247, true ); // Ratio 10:6.18
 	add_image_size( 'medium-feature', 600, 371, true ); // Ratio 10:6.18
-	add_image_size( 'children-feature', 600, 600, true ); // Ratio 1:1
+	add_image_size( 'square-feature', 600, 600, true ); // Ratio 1:1
 	
 	// rss thingy
 	add_theme_support('automatic-feed-links');
@@ -25,7 +25,7 @@ function starter_theme_support() {
 	// Add menu supports. http://codex.wordpress.org/Function_Reference/register_nav_menus
 	add_theme_support('menus');
 	register_nav_menus(array(
-		'primary' => __('Primary Navigation', 'reverie')
+		'primary' => __('Primary Navigation', 'starter')
 	));
 
 }
@@ -33,7 +33,7 @@ function starter_theme_support() {
 add_action('after_setup_theme', 'starter_theme_support'); 
 
 	// create widget areas: sidebar, footer
-	$sidebars = array('Sidebar');
+/*	$sidebars = array('Sidebar');
 	foreach ($sidebars as $sidebar) {
 		register_sidebar(array('name'=> $sidebar,
 			'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
@@ -41,7 +41,7 @@ add_action('after_setup_theme', 'starter_theme_support');
 			'before_title' => '<h6><strong>',
 			'after_title' => '</strong></h6>'
 		));
-	}
+	} */
 
 
 // return entry meta information for posts, used by multiple loops.
