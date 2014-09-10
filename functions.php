@@ -3,9 +3,6 @@
 require_once( get_template_directory() . '/lib/clean.php'); // do all the cleaning and enqueue here
 require_once( get_template_directory() . '/lib/foundation.php'); // load Foundation specific functions like top-bar
 require_once( get_template_directory() . '/lib/theme-functions.php'); // load Foundation specific functions like top-bar
-require_once( get_template_directory() . '/lib/class-tgm-plugin-activation.php' );
-require_once( get_template_directory() . '/lib/theme-require-plugins.php' );
-
 add_action( 'tgmpa_register', 'mb_register_required_plugins' );
 
 /**********************
