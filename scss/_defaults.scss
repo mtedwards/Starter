@@ -1,28 +1,16 @@
-body {
-	// background: $primary-color;
-}
 
-.row {
-	background: white;
-}
-
-/* ALIGNMENT */
-
-.center {
-	text-align: center;
-}
 
 
 /* Typograhy */
 
-h1, h2, h3, h4, h5, h6 {
-	
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	text-transform: uppercase;	
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: $header-font-family;
 	font-weight: $header-font-weight;
-	text-transform: uppercase;
+	
 }
 
 .h1 { font-size: $h1-font-size; }
