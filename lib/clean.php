@@ -1,34 +1,34 @@
 <?php
 /*********************
 Start all the functions
-at once for Reverie.
+at once
 *********************/
 
 // start all the functions
-add_action('after_setup_theme','reverie_startup');
+add_action('after_setup_theme','starter_startup');
 
-function reverie_startup() {
+function starter_startup() {
 
     // launching operation cleanup
-    add_action('init', 'reverie_head_cleanup');
+    add_action('init', 'starter_head_cleanup');
     // remove WP version from RSS
-    add_filter('the_generator', 'reverie_rss_version');
+    add_filter('the_generator', 'starter_rss_version');
     // remove pesky injected css for recent comments widget
-    add_filter( 'wp_head', 'reverie_remove_wp_widget_recent_comments_style', 1 );
+    add_filter( 'wp_head', 'starter_remove_wp_widget_recent_comments_style', 1 );
     // clean up comment styles in the head
-    add_action('wp_head', 'reverie_remove_recent_comments_style', 1);
+    add_action('wp_head', 'starter_remove_recent_comments_style', 1);
     // clean up gallery output in wp
-    add_filter('gallery_style', 'reverie_gallery_style');
+    add_filter('gallery_style', 'starter_gallery_style');
 
     // enqueue base scripts and styles
-    add_action('wp_enqueue_scripts', 'reverie_scripts_and_styles', 999);
+    add_action('wp_enqueue_scripts', 'starter_scripts_and_styles', 999);
     // ie conditional wrapper
-    add_filter( 'style_loader_tag', 'reverie_ie_conditional', 10, 2 );
+    add_filter( 'style_loader_tag', 'starter_ie_conditional', 10, 2 );
     
     // additional post related cleaning
-    add_filter( 'img_caption_shortcode', 'reverie_cleaner_caption', 10, 3 );
-    add_filter('get_image_tag_class', 'reverie_image_tag_class', 0, 4);
-    add_filter('get_image_tag', 'reverie_image_editor', 0, 4);
+    add_filter( 'img_caption_shortcode', 'starter_cleaner_caption', 10, 3 );
+    add_filter('get_image_tag_class', 'starter_image_tag_class', 0, 4);
+    add_filter('get_image_tag', 'starter_image_editor', 0, 4);
 
 } /* end reverie_startup */
 
@@ -42,7 +42,7 @@ Thanks for Bones
 http://themble.com/bones/
 **********************/
 
-function reverie_head_cleanup() {
+function starter_head_cleanup() {
 	// category feeds
 	 remove_action( 'wp_head', 'feed_links_extra', 3 );
 	// post and comment feeds
@@ -62,31 +62,31 @@ function reverie_head_cleanup() {
 	// WP version
 	remove_action( 'wp_head', 'wp_generator' );
   // remove WP version from css
-  // add_filter( 'style_loader_src', 'reverie_remove_wp_ver_css_js', 9999 );
+  // add_filter( 'style_loader_src', 'starter_remove_wp_ver_css_js', 9999 );
   // remove Wp version from scripts
-  // add_filter( 'script_loader_src', 'reverie_remove_wp_ver_css_js', 9999 );
+  // add_filter( 'script_loader_src', 'starter_remove_wp_ver_css_js', 9999 );
 
 } /* end head cleanup */
 
 // remove WP version from RSS
-function reverie_rss_version() { return ''; }
+function starter_rss_version() { return ''; }
 
 // remove WP version from scripts
-function reverie_remove_wp_ver_css_js( $src ) {
+function starter_remove_wp_ver_css_js( $src ) {
     if ( strpos( $src, 'ver=' ) )
         $src = remove_query_arg( 'ver', $src );
     return $src;
 }
 
 // remove injected CSS for recent comments widget
-function reverie_remove_wp_widget_recent_comments_style() {
+function starter_remove_wp_widget_recent_comments_style() {
    if ( has_filter('wp_head', 'wp_widget_recent_comments_style') ) {
       remove_filter('wp_head', 'wp_widget_recent_comments_style' );
    }
 }
 
 // remove injected CSS from recent comments widget
-function reverie_remove_recent_comments_style() {
+function starter_remove_recent_comments_style() {
   global $wp_widget_factory;
   if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
     remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
@@ -94,7 +94,7 @@ function reverie_remove_recent_comments_style() {
 }
 
 // remove injected CSS from gallery
-function reverie_gallery_style($css) {
+function starter_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
@@ -103,39 +103,39 @@ Enqueue CSS and Scripts
 **********************/
 
 // loading modernizr and jquery, and reply script
-function reverie_scripts_and_styles() {
+function starter_scripts_and_styles() {
   if (!is_admin()) {
 
     // modernizr (without media query polyfill)
-    wp_register_script( 'reverie-modernizr', get_template_directory_uri() . '/build/modernizr.min.js', array(), '2.8.3', false );
+    wp_register_script( 'starter-modernizr', get_template_directory_uri() . '/build/modernizr.min.js', array(), '2.8.3', false );
 
     // comment reply script for threaded comments
     if( get_option( 'thread_comments' ) )  { wp_enqueue_script( 'comment-reply' ); }
     
     // adding Foundation scripts file in the footer
-    wp_register_script( 'reverie-js', get_template_directory_uri() . '/build/production.min.js', array( 'jquery' ), '201407091218', true );
-    wp_register_style( 'reverie-stylesheet', get_template_directory_uri() . '/build/mini-style.css', array(), '201407091218', 'all' );
+    wp_register_script( 'starter-js', get_template_directory_uri() . '/build/production.min.js', array( 'jquery' ), '201407091218', true );
+    wp_register_style( 'starter-stylesheet', get_template_directory_uri() . '/build/mini-style.css', array(), '201407091218', 'all' );
     
 
     // enqueue styles and scripts
-    wp_enqueue_script( 'reverie-modernizr' );
-    wp_enqueue_style('reverie-ie-only');
+    wp_enqueue_script( 'starter-modernizr' );
+    wp_enqueue_style('starter-ie-only');
     /*
     I recommend using a plugin to call jQuery
     using the google cdn. That way it stays cached
     and your site will load faster.
     */
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'reverie-js' );
+    wp_enqueue_script( 'starter-js' );
     wp_enqueue_script( 'html5shiv' );
-	wp_enqueue_style( 'reverie-stylesheet' );
+	wp_enqueue_style( 'starter-stylesheet' );
   }
 }
 
 // adding the conditional wrapper around ie stylesheet
 // source: http://code.garyjones.co.uk/ie-conditional-style-sheets-wordpress/
-function reverie_ie_conditional( $tag, $handle ) {
-	if ( 'reverie-ie-only' == $handle )
+function starter_ie_conditional( $tag, $handle ) {
+	if ( 'starter-ie-only' == $handle )
 		$tag = '<!--[if lt IE 9]>' . "\n" . $tag . '<![endif]-->' . "\n";
 	return $tag;
 }
@@ -144,7 +144,7 @@ function reverie_ie_conditional( $tag, $handle ) {
 Post related cleaning
 *********************/
 /* Customized the output of caption, you can remove the filter to restore back to the WP default output. Courtesy of DevPress. http://devpress.com/blog/captions-in-wordpress/ */
-  function reverie_cleaner_caption( $output, $attr, $content ) {
+  function starter_cleaner_caption( $output, $attr, $content ) {
 
 	/* We're not worried abut captions in feeds, so just return the output here. */
 	if ( is_feed() )
@@ -186,13 +186,13 @@ Post related cleaning
 } /* end reverie_cleaner_caption */
 
 // Clean the output of attributes of images in editor. Courtesy of SitePoint. http://www.sitepoint.com/wordpress-change-img-tag-html/
-function reverie_image_tag_class($class, $id, $align, $size) {
+function starter_image_tag_class($class, $id, $align, $size) {
 	$align = 'align' . esc_attr($align);
 	return $align;
 } /* end reverie_image_tag_class */
 
 // Remove width and height in editor, for a better responsive world.
-function reverie_image_editor($html, $id, $alt, $title) {
+function starter_image_editor($html, $id, $alt, $title) {
 	return preg_replace(array(
 			'/\s+width="\d+"/i',
 			'/\s+height="\d+"/i',
