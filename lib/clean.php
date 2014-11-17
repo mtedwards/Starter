@@ -112,30 +112,25 @@ function starter_scripts_and_styles() {
     // comment reply script for threaded comments
     if( get_option( 'thread_comments' ) )  { wp_enqueue_script( 'comment-reply' ); }
     
-    // adding Foundation scripts file in the footer
-    wp_register_script( 'starter-js', get_template_directory_uri() . '/build/production.min.js', array( 'jquery' ), '201407091218', true );
     
     // If the server include .dev then load unminifeid css, else load minified and prefixed. 
     // Allows us to use Sourcemaps in chrome to see which .scss file is creating rules
     if (strpos($_SERVER['SERVER_NAME'],'.dev') !== false) {
-      wp_register_style( 'reverie-stylesheet', get_template_directory_uri() . '/css/style.css', array(), '201407091218', 'all' );
+      wp_register_style( 'starter-stylesheet', get_template_directory_uri() . '/css/style.css', array(), '201411181035', 'all' );
+      wp_register_script( 'starter-js', get_template_directory_uri() . '/js/build/production.js', array( 'jquery' ), '201411181035', true );
     } else {
-      wp_register_style( 'reverie-stylesheet', get_template_directory_uri() . '/build/mini-style.css', array(), '201407091218', 'all' );  
+      wp_register_style( 'starter-stylesheet', get_template_directory_uri() . '/build/mini-style.css', array(), '201411181035', 'all' );
+      wp_register_script( 'starter-js', get_template_directory_uri() . '/build/production.min.js', array( 'jquery' ), '201411181035', true );
     }
     
 
     // enqueue styles and scripts
     wp_enqueue_script( 'starter-modernizr' );
     wp_enqueue_style('starter-ie-only');
-    /*
-    I recommend using a plugin to call jQuery
-    using the google cdn. That way it stays cached
-    and your site will load faster.
-    */
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'starter-js' );
     wp_enqueue_script( 'html5shiv' );
-	wp_enqueue_style( 'starter-stylesheet' );
+    wp_enqueue_style( 'starter-stylesheet' );
   }
 }
 
