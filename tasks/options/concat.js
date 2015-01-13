@@ -1,7 +1,7 @@
 module.exports = {
   dist: {
     src: [
-    	'bower_components/foundation/js/foundation/foundation.js',
+    'bower_components/foundation/js/foundation/foundation.js',
 		'bower_components/foundation/js/foundation/foundation.abide.js',
 		//'bower_components/foundation/js/foundation/foundation.accordion.js',
 		//'bower_components/foundation/js/foundation/foundation.alert.js',
@@ -17,8 +17,10 @@ module.exports = {
 		//'bower_components/foundation/js/foundation/foundation.slider.js',
 		//'bower_components/foundation/js/foundation/foundation.tab.js',
 		//'bower_components/foundation/js/foundation/foundation.tooltip.js',
-		'bower_components/foundation/js/foundation/foundation.topbar.js',
+		//'bower_components/foundation/js/foundation/foundation.topbar.js',
 		'bower_components/foundation/js/vendor/placeholder.js',
+		//'bower_components/foundation/js/vendor/jquery.cookie.js',
+		'bower_components/foundation/js/vendor/fastclick.js',
 		//'bower_components/fitvids/jquery.fitvids.js',
 		//'js/jquery.fancybox.js',
 		//'js/jquery.fancybox-media.js',
