@@ -2,8 +2,7 @@ module.exports = {
   dist: {
     options: {
       // cssmin will minify later
-      style: 'expanded',
-      sourcemap: true
+      style: 'expanded'
     },
     files: {
       'css/style.css': 'scss/style.scss'
